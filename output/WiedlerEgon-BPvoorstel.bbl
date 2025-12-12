@@ -1,0 +1,269 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{AlGaradi2020}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=4cba43026e260c50c106a1ea19af561b}{%
+           family={Al-Garadi},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={Mohammed\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e3fa7fa3d620aafc38d1c19762c7f2d}{%
+           family={Mohamed},
+           familyi={M\bibinitperiod},
+           given={Amr},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21a914cdda9289ad6c3158f20316a86f}{%
+           family={Al-Ali},
+           familyi={A\bibinithyphendelim A\bibinitperiod},
+           given={Abdulla},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c4c82b64086ebf02e69657f20eb2660}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Xiaojiang},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05189762dbb0ad87814451304904fe83}{%
+           family={Guizani},
+           familyi={G\bibinitperiod},
+           given={Mohsen},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{79ac8d9d85f128b6ebfae183693c6308}
+      \strng{fullhash}{03a445e8533e6e142432ec4ac1f7df1d}
+      \strng{bibnamehash}{03a445e8533e6e142432ec4ac1f7df1d}
+      \strng{authorbibnamehash}{03a445e8533e6e142432ec4ac1f7df1d}
+      \strng{authornamehash}{79ac8d9d85f128b6ebfae183693c6308}
+      \strng{authorfullhash}{03a445e8533e6e142432ec4ac1f7df1d}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{A Survey on Security and Privacy in the Internet of Medical Things: State-of-the-Art and Future Trends}
+      \field{volume}{8}
+      \field{year}{2020}
+      \field{pages}{127909\bibrangedash 127926}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2020.3006899
+      \endverb
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/document/9133436
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/document/9133436
+      \endverb
+    \endentry
+    \entry{CISA2023a}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=97329f9723291d80bcb72f021cddf30c}{%
+           family={{Cybersecurity and Infrastructure Security Agency}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CISA}%
+      }
+      \strng{namehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{fullhash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{bibnamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authorbibnamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authornamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authorfullhash}{97329f9723291d80bcb72f021cddf30c}
+      \field{extraname}{1}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{StopRansomware Guide}
+      \field{type}{techreport}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.cisa.gov/stopransomware/ransomware-guide
+      \endverb
+      \verb{url}
+      \verb https://www.cisa.gov/stopransomware/ransomware-guide
+      \endverb
+    \endentry
+    \entry{CISA2023}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=97329f9723291d80bcb72f021cddf30c}{%
+           family={{Cybersecurity and Infrastructure Security Agency}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CISA}%
+      }
+      \strng{namehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{fullhash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{bibnamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authorbibnamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authornamehash}{97329f9723291d80bcb72f021cddf30c}
+      \strng{authorfullhash}{97329f9723291d80bcb72f021cddf30c}
+      \field{extraname}{2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{4}
+      \field{title}{Zero Trust Maturity Model}
+      \field{type}{techreport}
+      \field{version}{2.0}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb :CISA2023.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cisa.gov/sites/default/files/2023-04/zero_trust_maturity_model_v2_508.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cisa.gov/sites/default/files/2023-04/zero_trust_maturity_model_v2_508.pdf
+      \endverb
+    \endentry
+    \entry{Donenfeld2017}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=89a0a14a69a648cd9d137add3308425b}{%
+           family={Donenfeld},
+           familyi={D\bibinitperiod},
+           given={Jason\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{89a0a14a69a648cd9d137add3308425b}
+      \strng{fullhash}{89a0a14a69a648cd9d137add3308425b}
+      \strng{bibnamehash}{89a0a14a69a648cd9d137add3308425b}
+      \strng{authorbibnamehash}{89a0a14a69a648cd9d137add3308425b}
+      \strng{authornamehash}{89a0a14a69a648cd9d137add3308425b}
+      \strng{authorfullhash}{89a0a14a69a648cd9d137add3308425b}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Network and Distributed System Security Symposium (NDSS)}
+      \field{title}{WireGuard: Next Generation Kernel Network Tunnel}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb :Donenfeld2017.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://www.wireguard.com/papers/wireguard.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.wireguard.com/papers/wireguard.pdf
+      \endverb
+    \endentry
+    \entry{NIST2020}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cfeb8c1541c7775a7a285f1629145548}{%
+           family={{Scott Rose and Oliver Borchert and Stu Mitchell and Sean Connelly}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {National Institute of Standards}%
+        {Technology}%
+      }
+      \strng{namehash}{cfeb8c1541c7775a7a285f1629145548}
+      \strng{fullhash}{cfeb8c1541c7775a7a285f1629145548}
+      \strng{bibnamehash}{cfeb8c1541c7775a7a285f1629145548}
+      \strng{authorbibnamehash}{cfeb8c1541c7775a7a285f1629145548}
+      \strng{authornamehash}{cfeb8c1541c7775a7a285f1629145548}
+      \strng{authorfullhash}{cfeb8c1541c7775a7a285f1629145548}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{number}{800-207}
+      \field{title}{Zero Trust Architecture}
+      \field{type}{NIST Special Publication}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-207
+      \endverb
+      \verb{file}
+      \verb :NIST2020.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf
+      \endverb
+      \verb{url}
+      \verb https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf
+      \endverb
+    \endentry
+    \entry{MITRE2023}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=949b0970111d9a772f0458ebd4208987}{%
+           family={{The MITRE Corporation}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{949b0970111d9a772f0458ebd4208987}
+      \strng{fullhash}{949b0970111d9a772f0458ebd4208987}
+      \strng{bibnamehash}{949b0970111d9a772f0458ebd4208987}
+      \strng{authorbibnamehash}{949b0970111d9a772f0458ebd4208987}
+      \strng{authornamehash}{949b0970111d9a772f0458ebd4208987}
+      \strng{authorfullhash}{949b0970111d9a772f0458ebd4208987}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lateral Movement, Tactic TA0008 - Enterprise | MITRE ATT\&CK}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://attack.mitre.org/tactics/TA0008/
+      \endverb
+      \verb{url}
+      \verb https://attack.mitre.org/tactics/TA0008/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
