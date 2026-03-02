@@ -5,26 +5,72 @@
 \chapter{\IfLanguageName{dutch}{Methodologie}{Methodology}}%
 \label{ch:methodologie}
 
-%% TODO: In dit hoofstuk geef je een korte toelichting over hoe je te werk bent
-%% gegaan. Verdeel je onderzoek in grote fasen, en licht in elke fase toe wat
-%% de doelstelling was, welke deliverables daar uit gekomen zijn, en welke
-%% onderzoeksmethoden je daarbij toegepast hebt. Verantwoord waarom je
-%% op deze manier te werk gegaan bent.
-%% 
-%% Voorbeelden van zulke fasen zijn: literatuurstudie, opstellen van een
-%% requirements-analyse, opstellen long-list (bij vergelijkende studie),
-%% selectie van geschikte tools (bij vergelijkende studie, "short-list"),
-%% opzetten testopstelling/PoC, uitvoeren testen en verzamelen
-%% van resultaten, analyse van resultaten, ...
-%%
-%% !!!!! LET OP !!!!!
-%%
-%% Het is uitdrukkelijk NIET de bedoeling dat je het grootste deel van de corpus
-%% van je bachelorproef in dit hoofstuk verwerkt! Dit hoofdstuk is eerder een
-%% kort overzicht van je plan van aanpak.
-%%
-%% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
-%% en geef het een gepaste titel.
+Dit hoofdstuk beschrijft de aanpak die werd gevolgd om een antwoord te formuleren op de onderzoeksvraag. Het onderzoek heeft een vergelijkend en experimenteel karakter en bestaat uit meerdere opeenvolgende fasen. Elke fase heeft een specifieke doelstelling en levert concrete resultaten op die als input dienen voor de volgende stap.
 
-\lipsum[21-25]
+De gekozen aanpak combineert een literatuurstudie met een technische Proof of Concept (PoC). Op deze manier wordt zowel een theoretisch onderbouwde als praktisch verifieerbare evaluatie gemaakt van het verschil tussen een traditionele VPN-oplossing en een Zero Trust Network Access (ZTNA)-architectuur.
+
+\section{Fase 1: Literatuurstudie en technologieverkenning}
+
+In de eerste fase werd een literatuurstudie uitgevoerd om de theoretische basis van het onderzoek te bepalen. Hierbij werden wetenschappelijke publicaties, standaarden en technische documentatie geanalyseerd met betrekking tot:
+\begin{itemize}
+	\item het Zero Trust-principe en de bijhorende architectuur;
+	\item de werking en beperkingen van traditionele VPN-oplossingen;
+	\item beveiligingsrisico’s zoals laterale beweging;
+	\item beschikbare open-source ZTNA-oplossingen.
+\end{itemize}
+
+Op basis van deze studie werd een overzicht opgesteld van mogelijke technologieën. Vervolgens werd een geschikte open-source ZTNA-oplossing geselecteerd op basis van criteria zoals:
+\begin{itemize}
+	\item ondersteuning van moderne VPN-technologie;
+	\item mogelijkheid tot fijnmazige toegangscontrole;
+	\item geschiktheid voor implementatie in een KMO-omgeving.
+\end{itemize}
+
+De literatuurstudie vormt de basis voor de technische keuzes in de volgende fasen.
+
+\section{Fase 2: Ontwerp van de testomgeving}
+
+In deze fase werd een representatieve netwerkomgeving ontworpen die de IT-infrastructuur van een woonzorgcentrum simuleert. De omgeving werd gevirtualiseerd en opgesplitst in verschillende netwerksegmenten, waaronder:
+\begin{itemize}
+	\item een administratief netwerk;
+	\item een medisch of applicatiesegment;
+	\item een extern gebruikersscenario.
+\end{itemize}
+
+Het doel van deze fase was het creëren van een gecontroleerde testomgeving waarin beide toegangsscenario’s onder identieke omstandigheden kunnen worden geëvalueerd.
+
+\section{Fase 3: Implementatie van de scenario’s}
+
+Binnen de testomgeving werden twee afzonderlijke scenario’s geïmplementeerd:
+
+\begin{itemize}
+	\item \textbf{Scenario A (nulmeting):} een traditionele VPN-configuratie waarbij externe gebruikers netwerktoegang krijgen tot interne segmenten.
+	\item \textbf{Scenario B (experiment):} een configuratie gebaseerd op een open-source ZTNA-oplossing waarbij toegang wordt beperkt op basis van identiteit en specifieke diensten.
+\end{itemize}
+
+Door beide configuraties in dezelfde omgeving op te zetten, wordt een objectieve vergelijking mogelijk.
+
+\section{Fase 4: Experiment en dataverzameling}
+
+Om het verschil in aanvalsoppervlak meetbaar te maken, werd een experimentele aanpak toegepast volgens het \textit{assume breach}-principe. Hierbij wordt verondersteld dat een extern endpoint gecompromitteerd is en beschikt over geldige toegangsrechten.
+
+Vanuit dit endpoint werden in beide scenario’s netwerkscans uitgevoerd met tools zoals Nmap om:
+\begin{itemize}
+	\item het aantal bereikbare hosts te bepalen;
+	\item open poorten en beschikbare diensten te identificeren;
+	\item de mogelijkheid tot laterale verbindingen tussen netwerksegmenten te evalueren.
+\end{itemize}
+
+Daarnaast werden logbestanden en netwerkverkeer geanalyseerd om te controleren of toegangsregels correct werden afgedwongen.
+
+\section{Fase 5: Analyse en vergelijking}
+
+In de laatste fase werden de resultaten van beide scenario’s met elkaar vergeleken. Hierbij werd de focus gelegd op:
+\begin{itemize}
+	\item de reductie van het aantal bereikbare systemen;
+	\item de beperking van laterale beweging;
+	\item het verschil in effectief aanvalsoppervlak.
+\end{itemize}
+
+Op basis van deze analyse werd geëvalueerd in welke mate de ZTNA-oplossing een meerwaarde biedt ten opzichte van een traditionele VPN-configuratie. De bevindingen vormen de basis voor de conclusies en aanbevelingen in het laatste hoofdstuk.
 

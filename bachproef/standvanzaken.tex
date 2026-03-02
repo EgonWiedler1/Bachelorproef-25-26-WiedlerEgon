@@ -1,51 +1,55 @@
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
 \label{ch:stand-van-zaken}
 
-% Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
-% dit hoofdstuk past binnen het geheel van de bachelorproef. Geef in het
-% bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
+Dit hoofdstuk bouwt verder op de inleiding en beschrijft de huidige stand van zaken binnen het onderzoeksdomein. Waar in het vorige hoofdstuk de probleemstelling en onderzoeksvraag werden geïntroduceerd, wordt hier de theoretische en technologische context verder uitgediept. Eerst worden de traditionele VPN oplossingen besproken, gevolgd door beperkingen van die oplossingen in moderne IT-omgevingen. Vervolgens zullen we het zero trust model en vooral de focus op zero trust network access (ZTNA)  toelichten. Met deze inzichten zullen we een basis vormen voor onze  methodologie.
 
-% Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
+\section{Traditionele externe toegang via VPN}
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+Virtual Private Networks (VPN) worden al jarenlang gebruikt om externe gebruikers veilig toegang te geven tot interne netwerken. Een VPN creëert een versleutelde tunnel tussen het toestel van de gebruiker en het bedrijfsnetwerk, waardoor gegevens vertrouwelijk kunnen worden uitgewisseld via het internet \autocite{barracuda2024}.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+Het klassieke VPN-model is gebaseerd op een perimeterbenadering, waarbij het interne netwerk als vertrouwd wordt beschouwd en externe netwerken als onbetrouwbaar. Zodra een gebruiker succesvol geauthenticeerd is, krijgt deze doorgaans netwerktoegang tot een volledig subnet of meerdere interne systemen. Dit model wordt vaak omschreven als het “castle-and-moat”-principe \autocite{nflo2025}. Je kan dit zien als een casteel met daar rond een grote cirkel water, en het kasteel heeft dan een hefbare brug waarmee je van buiten naar binnen kan en omgekeerd. De brug in deze instantie is dan de VPN verbinding die een apparaat in een niet betrouwbaar netwerk dan toegang kan geven aan een 
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+Hoewel deze aanpak jarenlang effectief was, sluit ze minder goed aan bij moderne IT-omgevingen waarin gebruikers vanaf verschillende locaties werken en applicaties zowel on-premise als in de cloud worden gehost.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+\section{Beperkingen van het VPN-model}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+Een belangrijk nadeel van traditionele VPN-oplossingen is het gebrek aan fijnmazige toegangscontrole. Doordat gebruikers netwerktoegang krijgen in plaats van applicatietoegang, ontstaat een groter aanvalsoppervlak. Wanneer een toestel of account wordt bemachtigd, kan een aanvaller zich verder door het interne netwerk bewegen. Dit proces staat bekend als laterale beweging en vormt een belangrijke factor bij ransomware-incidenten \autocite{barracuda2024}.
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+Daarnaast kunnen VPN-oplossingen leiden tot prestatieproblemen doordat netwerkverkeer via centrale gateways wordt geleid, een fenomeen dat bekendstaat als hairpinning \autocite{seqrite2025}. Ook het beheer van toegangsrechten wordt complexer naarmate de omgeving groeit, wat het risico op foutieve configuraties verhoogt.
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+Door de toename van hybride werken, cloudgebruik en mobiele apparaten wordt het traditionele vertrouwensmodel van VPN steeds minder geschikt voor hedendaagse organisaties.
 
-\lipsum[7-20]
+\section{Zero Trust Network Access (ZTNA)}
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+Zero Trust Network Access (ZTNA) is een concrete implementatie van Zero Trust voor externe toegang. In tegenstelling tot VPN-oplossingen geeft ZTNA geen netwerktoegang, maar toegang tot specifieke applicaties of diensten op basis van identiteit en beleid \autocite{nflo2025}.
+
+Een belangrijk kenmerk van ZTNA is de scheiding tussen de control plane en de data plane. De control plane is verantwoordelijk voor authenticatie, autorisatie en beleidsbeslissingen, terwijl de data plane instaat voor de versleutelde dataverbinding tussen client en applicatie. Deze architectuur verhoogt zowel de veiligheid als de schaalbaarheid van het systeem \autocite{terrazone2025}.
+
+Volgens voorspellingen van Gartner zal een groot deel van de organisaties overstappen van traditionele VPN-oplossingen naar ZTNA voor externe toegang, voornamelijk door de groei van hybride werkmodellen en cloudinfrastructuren \autocite{gartner2022}.
+
+\section{Relevantie voor de zorgsector}
+
+De zorgsector vormt een aantrekkelijk doelwit voor cyberaanvallen vanwege de hoge waarde van medische gegevens en de kritische afhankelijkheid van IT-systemen. Recente dreigingsrapporten tonen een toename van ransomware-aanvallen en datalekken binnen zorgorganisaties \autocite{zcert2024}.
+
+Daarnaast worden zorgnetwerken gekenmerkt door een heterogene omgeving met verouderde systemen, medische apparatuur en IoT-toepassingen. Deze combinatie maakt het moeilijk om een uniform beveiligingsniveau te garanderen \autocite{anacyber2024}.
+
+ZTNA kan in deze context bijdragen aan een betere beveiliging door netwerksegmentatie en het beperken van zichtbaarheid tussen systemen. Apparaten en diensten worden enkel toegankelijk gemaakt voor geautoriseerde gebruikers, waardoor het risico op laterale beweging en grootschalige incidenten wordt verminderd \autocite{appgate2023}.
+
+\section{Open-source ZTNA-oplossingen}
+
+Hoewel veel commerciële ZTNA-platformen beschikbaar zijn, vormen licentiekosten vaak een drempel voor kleinere organisaties. Daarom groeit de interesse in open-source alternatieven.
+
+Voorbeelden van open-source ZTNA-technologieën zijn onder meer:
+\begin{itemize}
+	\item Headscale en NetBird, gebaseerd op WireGuard-technologie;
+	\item OpenZiti, dat een applicatiegerichte Zero Trust-overlay implementeert;
+	\item Pomerium, dat gebruikmaakt van identity-aware proxying.
+\end{itemize}
+
+Deze oplossingen bieden mogelijkheden voor microsegmentatie, identiteitsgebaseerde toegangscontrole en veilige communicatie zonder open netwerkpoorten \autocite{aimultiple2025}.
+
+Voor organisaties zoals woonzorgcentra kan een open-source implementatie een kostenefficiënt alternatief bieden, mits de technische haalbaarheid en beveiligingsvoordelen voldoende worden aangetoond.
+
+
+
 

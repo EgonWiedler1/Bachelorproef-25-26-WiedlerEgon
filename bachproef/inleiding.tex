@@ -5,7 +5,13 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+De zorgsector maakt de afgelopen jaren een sterke digitale evolutie door. Ook woonzorgcentra zijn steeds meer afhankelijk van informatiesystemen voor hun dagelijkse werking. Elektronische patiëntendossiers, cloudgebaseerde toepassingen, mobiele werkplekken en een toenemend aantal zorg- en medische IoT-apparaten ondersteunen de zorgverlening en verhogen de efficiëntie van processen.
+
+Parallel met deze digitalisering groeit de nood aan externe toegang tot interne systemen. Artsen, thuiswerkend personeel, externe IT-partners en leveranciers moeten op een veilige en betrouwbare manier verbinding kunnen maken met de IT-omgeving van de organisatie. Deze evolutie vergroot echter het potentiële aanvalsoppervlak van zorginstellingen. Aangezien woonzorgcentra gevoelige persoonsgegevens verwerken en sterk afhankelijk zijn van de beschikbaarheid van hun systemen, kan een beveiligingsincident ernstige gevolgen hebben voor zowel de continuïteit van de zorgverlening als de privacy van bewoners.
+
+Traditioneel wordt externe toegang gerealiseerd via Virtual Private Network (VPN)-oplossingen. Hoewel VPN-technologie zorgt voor versleutelde communicatie, is het onderliggende beveiligingsmodel voornamelijk gebaseerd op een netwerkperimeter. Na succesvolle authenticatie krijgt een gebruiker vaak toegang tot volledige netwerksegmenten in plaats van enkel tot de strikt noodzakelijke diensten. Wanneer een toestel of gebruikersaccount gecompromitteerd raakt, kan een aanvaller zich hierdoor verder binnen het netwerk verplaatsen. Dit fenomeen, gekend als laterale beweging, vergroot de impact van een initiële inbraak en verhoogt het risico op grootschalige incidenten zoals ransomware.
+
+Een alternatief beveiligingsparadigma is Zero Trust Network Access (ZTNA). Dit model vertrekt van het principe dat geen enkele gebruiker of toestel impliciet vertrouwd wordt, ongeacht de locatie of het netwerk van waaruit verbinding wordt gemaakt. Toegang wordt per sessie toegekend op basis van identiteit, context en minimale rechten. Door netwerktoegang te beperken tot specifieke applicaties en services kan het aanvalsoppervlak aanzienlijk worden verkleind en wordt de mogelijkheid tot laterale beweging beperkt. Voor woonzorgcentra kan dit model bijdragen aan een betere balans tussen beveiliging en operationele werkbaarheid.
 
 \begin{itemize}
   \item context, achtergrond
@@ -20,17 +26,38 @@ De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+
+Binnen woonzorgcentra wordt grotendeels gebruikgemaakt van een traditionele VPN-oplossing om externe toegang tot het interne netwerk mogelijk te maken. Deze aanpak biedt een beveiligde verbinding, maar kent een belangrijke beperking: na authenticatie krijgt de gebruiker toegang tot brede delen van het netwerk. Hierdoor ontbreekt een voldoende niveau van interne segmentatie en fijnmazige toegangscontrole.
+
+Wanneer een extern toestel wordt geschonden, kan dit functioneren als toegangspunt tot andere systemen binnen de infrastructuur. Kritieke toepassingen, servers en netwerkdiensten kunnen hierdoor bereikbaar worden voor een aanvaller, zelfs wanneer deze oorspronkelijk niet voor de gebruiker bedoeld waren. In een zorgomgeving, waar verschillende systemen met uiteenlopende beveiligingsniveaus naast elkaar bestaan, vormt dit een aanzienlijk risico voor zowel de beschikbaarheid van diensten als de bescherming van gevoelige gegevens, zowel inwoners als van de medewerkers.
+
+De concrete doelgroep van deze bachelorproef bestaat uit de IT-verantwoordelijken en systeembeheerders van woonzorgcentra en kleinschalige zorgorganisaties met een gelijkaardige IT-omgeving en beperkte middelen voor dure commerciële beveiligingsoplossingen. Deze organisaties hebben nood aan een technisch onderbouwde evaluatie van haalbare en kostenefficiënte alternatieven voor veilige externe toegang.
+
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+De centrale onderzoeksvraag van deze bachelorproef luidt als volgt:
+
+\textit{In welke mate reduceert de implementatie van een open-source Zero Trust Network Access (ZTNA)-oplossing het aanvalsoppervlak voor laterale beweging binnen de IT-infrastructuur van een woonzorgcentrum, in vergelijking met een traditionele VPN-oplossing?}
+
+Om deze hoofdvraag te beantwoorden, worden volgende deelvragen geformuleerd:
+
+\begin{itemize}
+	\item Wat zijn de belangrijkste architecturale en beveiligingsverschillen tussen een traditionele VPN en een ZTNA-model?
+	\item Hoe groot is het netwerkbereik en het potentiële aanvalsoppervlak in een omgeving die gebruikmaakt van een klassieke VPN-oplossing?
+	\item Welke open-source ZTNA-oplossing is het meest geschikt voor implementatie in een KMO-omgeving zoals een woonzorgcentrum?
+	\item In welke mate vermindert een ZTNA-implementatie het aantal bereikbare hosts en diensten vanuit een gecompromitteerd extern endpoint?
+\end{itemize}
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+Het doel van deze bachelorproef is het opzetten van een technische Proof of Concept (PoC) waarin een representatieve IT-omgeving van een woonzorgcentrum wordt gesimuleerd. Binnen deze testomgeving worden twee scenario’s uitgewerkt: een configuratie met traditionele VPN-toegang en een configuratie gebaseerd op een open-source ZTNA-oplossing.
+
+Het succes van het onderzoek wordt bepaald aan de hand van een kwantitatieve vergelijking tussen beide scenario’s. Vanuit een extern endpoint wordt gemeten welke netwerkhosts en diensten bereikbaar zijn en in welke mate laterale beweging mogelijk is. Op basis van deze metingen wordt nagegaan of en in welke mate de ZTNA-oplossing het aanvalsoppervlak reduceert ten opzichte van de VPN-situatie.
+
+Het eindresultaat bestaat uit een werkende PoC en een technisch onderbouwd adviesrapport met aanbevelingen voor de doelgroep, zodat zij een gefundeerde beslissing kunnen nemen over een mogelijke implementatie.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}
@@ -46,5 +73,9 @@ In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand v
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+
+
+
+In Hoofdstuk~\ref{ch:Proof-of-Concept} wordt uitgelegd hoe we de testomgeving omzetten en wat de resultaten waren van de metingen. Uit deze metingen zal er ook een besluit gevormd worden.
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.

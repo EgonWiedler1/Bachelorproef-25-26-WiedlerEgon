@@ -29,6 +29,7 @@
 \author{Egon Wiedler}
 \email{Egon.Wiedler@student.hogent.be}
 
+
 % TODO: Medestudent
 % Gaat het om een bachelorproef in samenwerking met een student in een andere
 % opleiding? Geef dan de naam en emailadres hier
@@ -36,8 +37,8 @@
 % \email{yasmine.alaoui@student.hogent.be}
 
 % TODO: Geef de co-promotor op
-\supervisor[Co-promotor]{S. Beekman (Synalco, \href{mailto:sigrid.beekman@synalco.be}{sigrid.beekman@synalco.be})}
-
+\supervisor[Co-promotor]{onbekend (Synalco, \href{mailto:onbekend@onbekend.be}{onbekend@onbekend.be})}
+\projectrepo{https://github.com/EgonWiedler1/Bachelorproef-25-26-WiedlerEgon.git}
 % Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
 % Kies uit deze lijst:
 %
@@ -49,25 +50,28 @@
 % - Als het onderzoek niet past binnen een van deze domeinen specifieer je deze
 %   zelf
 %
+
 \specialisation{System \& Network Administrator}
 \keywords{Zero Trust Network Access (ZTNA), Laterale beweging, Micro-segmentatie, IoMT, Open-source, VPN }
 
 \usepackage{pgfgantt}
 \begin{document}
-
-\begin{abstract}
 	
-De toenemende digitalisering binnen de zorgsector, gecombineerd met de noodzaak voor externe toegang tot patiëntgegevens en medische IoT-apparatuur, creëert een complex beveiligingsvraagstuk voor hedendaagse woonzorgcentra. een speciefiek en zeer kritisch probleem hierbinnen is de architecturale zwakte van traditionel VPN-oplossingen. Deze verlenen na authenticatie vaak onnodig brede netwerktoegang en zullen zo de laterale beweging van kwaadwillende naar cruciale systemen faciliteren. Dit onderzoeksvoorstel zal zich daarom centreren rond de hoofdonderzoeksvraag: “In welke mate reduceert de implementatie van een open-source Zero-Trust Network Access (ZTNA) oplossing het aanvalsoppervlak voor laterale beweging binnen de IT-infrastructuur van een woonzorgcentrum, vergeleken met een traditionele VPN?”. De voorgestelde methodologie omvat het opzetten van een representatieve gesimuleerde omgeving ook wel een Proof of Concept, gebasseerd op een segment van bestaande netwerkinfrastructuur van een zorginstelling. waarin zowel de traditionele VPN methode en de ZTNA-oplossing technisch worden geïmplementeerd. Vervolgens zal er door kwalitatieve netwerkanalyses en bereikbaarheidstesten, het verschil op open netwerkpaden en het aanvalsoppervlak tussen beide scenario’s gemeten worden. De verwachte resultaten duiden zich op een significante en meetbare reductie van de interne bereikbaarheid in het ZTNA-scenario zonder verlies van noodzakelijke functionalitiet. Als de resultaten doormiddel van het ondeerzoek bevestigd worden, zal kunnen geconcludeerd worden dat de implementatie van open-source ZTNA-technologie een superieure en noodzakelijke strategie is om de weerbaarheid van zorgnetwerken tegen interne verspreiding van cyberdreigingen.
-
-
-\end{abstract}
-
-\tableofcontents
-
-% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
-% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
-\input{voorstel-inhoud}
-
-\printbibliography[heading=bibintoc]
-
+	\begin{abstract}
+		
+		De toenemende digitalisering binnen de zorgsector, gecombineerd met de noodzaak voor externe toegang tot patiëntgegevens en medische IoT-apparatuur, creëert een complex beveiligingsvraagstuk voor hedendaagse woonzorgcentra. Een specifiek en zeer kritisch probleem hierbinnen is de architecturale zwakte van traditionele VPN-oplossingen. Deze verlenen na authenticatie vaak onnodig brede netwerktoegang en zullen zo de laterale beweging van kwaadwillenden naar cruciale systemen faciliteren. 
+		\newline Dit onderzoeksvoorstel zal zich daarom centreren rond de hoofdonderzoeksvraag: “In welke mate reduceert de implementatie van een open-source Zero-Trust Network Access (ZTNA) oplossing het aanvalsoppervlak voor laterale beweging binnen de IT-infrastructuur van een woonzorgcentrum, vergeleken met een traditionele VPN?”. De voorgestelde methodologie omvat het opzetten van een representatieve gesimuleerde omgeving ook wel een Proof of Concept genoemd, gebaseerd op een segment van bestaande netwerkinfrastructuur van een zorginstelling waarin zowel de traditionele VPN methode als de ZTNA-oplossing technisch worden geïmplementeerd.
+		\newline Vervolgens zal er door kwalitatieve netwerkanalyses en bereikbaarheidstesten, het verschil op open netwerkpaden en het aanvalsoppervlak tussen beide scenario’s gemeten worden. De verwachte resultaten duiden zich op een significante en meetbare reductie van de interne bereikbaarheid in het ZTNA-scenario zonder verlies van noodzakelijke functionaliteit. Als de resultaten doormiddel van het onderzoek bevestigd worden, zal kunnen geconcludeerd worden dat de implementatie van open-source ZTNA-technologie een superieure en noodzakelijke strategie is om de weerbaarheid van zorgnetwerken te verhogen tegen interne verspreiding van cyberdreigingen.
+		
+		
+	\end{abstract}
+	
+	\tableofcontents
+	
+	% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+	% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+	\input{voorstel-inhoud}
+	
+	\printbibliography[heading=bibintoc]
+	
 \end{document}

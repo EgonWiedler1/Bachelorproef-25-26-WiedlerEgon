@@ -16,8 +16,7 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-
-\subsection{Situering en Casus}
+\subsection{Situering}
 IT-infrastructuur binnen de zorgsector ondergaat een snelle transformatie. Waar een woonzorgcentrum (WZC) vroeger volstond met enkele administratieve werkplekken, is er vandaag sprake van een complex ecosysteem met elektronische patiëntendossiers (EPD), mobiele zorgtoepassingen en een groeiend aantal medische IoT-apparaten (``Internet of Medical Things''). Deze digitalisering brengt echter nieuwe beveiligingsrisico's met zich mee, zeker gezien de noodzaak voor externe toegang door leveranciers, artsen en thuiswerkend personeel.
 
 Dit onderzoek vertrekt vanuit een concrete casus bij woonzorgcentrum Curando. Binnen deze organisatie wordt momenteel gebruikgemaakt van een traditionele VPN-oplossing (Virtual Private Network) om externe toegang te faciliteren. Hoewel deze technologie de verbinding versleutelt, hanteert ze in de praktijk vaak een perimeter-gebaseerd beveiligingsmodel: eenmaal een gebruiker geauthenticeerd is, krijgt deze toegang tot een groot deel van het interne netwerksegment.
@@ -32,47 +31,76 @@ Om een oplossing te bieden voor dit veiligheidsrisico, staat in dit onderzoek de
 	\textbf{``In welke mate reduceert de implementatie van een open-source Zero-Trust Network Access (ZTNA) oplossing het aanvalsoppervlak voor laterale beweging binnen de IT-infrastructuur van een woonzorgcentrum, vergeleken met een traditionele VPN?''}
 \end{quote}
 
-\subsection{Onderzoeksdoelstelling}
-Het doel van deze bachelorproef is niet louter theoretisch; het beoogt een tastbare technische validatie. Het concrete eindresultaat is een Proof of Concept (PoC) in een gesimuleerde omgeving, die de netwerkstructuur van de betreffende zorginstelling nabouwt. Binnen deze omgeving worden de traditionele VPN en een open-source ZTNA-oplossing (zoals Headscale of NetBird) technisch geïmplementeerd en vergeleken.
+Ter beantwoording van deze hoofdvraag wordt het onderzoek opgesplitst in twee domeinen, die elk worden uitgewerkt aan de hand van specifieke deelvragen:
 
-Het succes van dit onderzoek wordt bepaald door een kwantitatieve analyse waarin wordt aangetoond of, en in welke mate, de ZTNA-oplossing het aantal bereikbare netwerkpaden reduceert ten opzichte van de nulmeting (VPN). Dit resulteert uiteindelijk in een technisch adviesrapport voor de doelgroep waarmee zij een gefundeerde beslissing kunnen nemen over de migratie naar een Zero-Trust architectuur.
+\begin{itemize}
+	\item \textbf{Probleemdomein:} Dit domein richt zich op het analyseren van de huidige netwerkarchitectuur en de bijbehorende beveiligingsrisico’s binnen zorgomgevingen. De volgende deelvragen staan hierbij centraal:
+	\begin{enumerate}
+		\item Wat zijn de fundamentele architecturale verschillen tussen VPN en Zero Trust Network Access (ZTNA) volgens het NIST-raamwerk?
+		\item Welke specifieke beveiligingsrisico’s ontstaan bij het gebruik van traditionele VPN-oplossingen in een zorgnetwerk met IoT-apparatuur?
+		\item Hoe groot is het aanvalsoppervlak van een traditioneel VPN-gebaseerd zorgnetwerk en welke kwetsbaarheden zijn hierbij het meest relevant?
+	\end{enumerate}
+	
+	\item \textbf{Oplossingsdomein:} Dit domein focust op het evalueren van alternatieve netwerktoegangsmodellen en het praktisch aantonen van hun meerwaarde. Dit leidt tot de volgende deelvragen:
+	\begin{enumerate}
+		\item Welke open-source ZTNA-oplossing (zoals NetBird of Headscale) is het meest geschikt voor toepassing in een KMO-omgeving?
+		\item Op welke manier kan een representatieve Proof of Concept (PoC) worden opgezet om VPN- en ZTNA-architecturen objectief met elkaar te vergelijken?
+		\item Hoe kan het verschil in aanvalsoppervlak tussen een VPN- en een ZTNA-oplossing binnen deze PoC kwantitatief meetbaar worden gemaakt?
+	\end{enumerate}
+\end{itemize}
+
+
+\subsection{Onderzoeksdoelstelling}
+Het doel van deze bachelorproef is niet enkel theoretisch; het beoogt tastbare, technisch meetbare resultaten. Het concrete eindresultaat is een Proof of Concept (PoC) in een gesimuleerde omgeving, die de netwerkstructuur van de betreffende zorginstelling nabouwt. Binnen deze omgeving worden de traditionele VPN en een open-source ZTNA-oplossing (zoals Headscale of NetBird) technisch geïmplementeerd en vergeleken.
+
+Het succes van dit onderzoek wordt bepaald door een kwantitatieve analyse waarin wordt aangetoond of, en in welke mate, de ZTNA-oplossing het aantal bereikbare netwerkpaden reduceert ten opzichte van de nulmeting (VPN). Dit resulteert uiteindelijk in een technisch adviesrapport voor de doelgroep, waarmee zij een gefundeerde beslissing kunnen nemen over een eventuele implementatie van deze architectuur.
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
+Deze literatuurstudie onderzoekt de fundamentele principes van Zero Trust Network Access (ZTNA), de architecturale componenten, de noodzaak voor migratie vanaf traditionele VPN’s en de specifieke toepassing binnen de gezondheidszorg en open-source oplossingen.
 
-\subsection{Dreigingslandschap in de zorgsector}
-De digitalisering van de gezondheidszorg heeft geleid tot een exponentiële groei van het aantal verbonden apparaten, ook wel het \emph{Internet of Medical Things} (IoMT) genoemd. Hoewel deze connectiviteit de patiëntenzorg verbetert, vergroot het tevens aanzienlijk het aanvalsoppervlak en mogelijkheden van zorginstellingen ~\autocite{AlGaradi2020}. Uit recent onderzoek blijkt dat zorgnetwerken een primair doelwit zijn voor ransomware-aanvallen, waarbij de impact vaak verergerd wordt door verouderde systemen (legacy) die niet eenvoudig kunnen worden gepatcht~\autocite{CISA2023a}. De kritieke aard van medische data en de noodzaak tot 24/7 beschikbaarheid maken dat traditionele beveiligingsmodellen, die enkel focussen op het buitenhouden van indringers, niet langer volstaan.
+\subsection{Definitie en Kernprincipes}
+Zero Trust (ZT) wordt niet gedefinieerd als een enkele technologie, maar als een cybersecurity-paradigma gericht op de bescherming van resources. Het kernprincipe, zoals gedefinieerd door het National Institute of Standards and Technology (NIST), is dat vertrouwen nooit impliciet wordt verleend op basis van netwerklocatie of het eigendom van een apparaat \parencite{rose2020zero}. Een Zero Trust Architectuur (ZTA) vereist dat elke toegang tot bedrijfsbronnen per sessie wordt geauthenticeerd en geautoriseerd, waarbij gebruik wordt gemaakt van dynamisch beleid om onzekerheid bij toegangsbeslissingen te minimaliseren \parencite{rose2020zero}.
 
-\subsection{De beperkingen van het perimeter-model en VPN}
-Historisch gezien vertrouwen organisaties op het zogenaamde ``kasteel-en-slotgracht'' model (Castle-and-Moat). Hierbij wordt de netwerkperimeter beveiligd door firewalls, en wordt externe toegang gefaciliteerd via Virtual Private Networks (VPN). ~\autocite{NIST2020} stelt echter dat dit model uitgaat van een gevaarlijke aanname: impliciet vertrouwen voor iedereen die zich binnen het netwerk bevindt.
+\subsection{Architectuur: Control Plane vs. Data Plane}
+Een essentieel kenmerk van moderne ZTNA-platformen is de strikte scheiding tussen de \textit{control plane} (besturingslaag) en de \textit{data plane} (gegevenslaag).
+\begin{itemize}
+	\item \textbf{Control Plane:} werkt als het "brein" van het systeem. Het verifieert de identiteit, controleert de status van het apparaat (posture) en evalueert het beleid voordat er data wordt uitgewisseld \parencite{terrazone2025}.
+	\item \textbf{Data Plane:} werkt als het "lichaam" dat de daadwerkelijke data transporteert via versleutelde tunnels, maar pas nadat de control plane toestemming heeft gegeven \parencite{terrazone2025}.
+\end{itemize}
+Volgens de NIST-standaard bestaat de logische architectuur uit een \textit{Policy Engine} (PE) die beslissingen neemt, een \textit{Policy Administrator} (PA) die de verbinding opzet, en een \textit{Policy Enforcement Point} (PEP) dat de verbinding daadwerkelijk toestaat of blokkeert \parencite{rose2020zero}. Deze scheiding zorgt voor schaalbaarheid en veiligheid; als de control plane uitvalt, kunnen bestaande sessies op de data plane vaak blijven bestaan \parencite{terrazone2025}.
 
-Wanneer een gebruiker via een traditionele VPN inlogt, krijgt deze veelal een IP-adres binnen het interne netwerk en daarmee netwerkbrede toegang tot bronnen die niet noodzakelijk zijn voor diens functie. Dit gebrek aan interne segmentatie faciliteert \emph{laterale beweging}, een techniek waarbij aanvallers na een initiële inbraak (bijvoorbeeld via een gecompromitteerde laptop of IoT-sensor) zich vrij door het netwerk bewegen op zoek naar waardevolle data~\autocite{MITRE2023}. In de context van een woonzorgcentrum betekent dit dat een kwetsbaarheid in een slim bed of thermostaat een directe route kan bieden naar de server met patiëntendossiers.
+\subsection{Verschuiving van VPN naar ZTNA}
+Traditionele VPN-technologie, gebaseerd op het ``kasteel en gracht''-model, voldoet niet meer in de moderne hybride werkomgeving. VPN's verlenen vaak toegang tot het volledige netwerk na authenticatie, wat \textit{laterale verplaatsing} door aanvallers mogelijk maakt en het risico op ransomware vergroot \autocite{barracuda2024}. Daarnaast zorgen VPN's vaak voor prestatieproblemen door verkeer onnodig via een centraal punt te leiden ("hairpinning") \autocite{seqrite2025}.
 
-\subsection{verschuiving naar Zero Trust Architecture}
-Als reactie op de tekortkomingen van het perimeter-model is de \emph{Zero Trust Architecture} (ZTA) ontwikkeld. Het kernprincipe, zoals gedefinieerd door het National Institute of Standards and Technology (NIST), luidt: ``never trust, always verify''~\autocite{NIST2020}. In tegenstelling tot VPN's, die toegang verlenen op basis van netwerklocatie, koppelt ZTA toegangsrechten los van de netwerktopologie.
+ZTNA keert het model om van "verbinden dan verifiëren" naar "verifiëren dan verbinden" \autocite{nflo2025}. Gartner voorspelt dat in 2025 minstens 70\% van de nieuwe implementaties voor toegang op afstand gebruik zal maken van ZTNA in plaats van VPN, gedreven door de toename van hybride werken en cloud-adoptie \autocite{gartner2022}.
 
-In een Zero Trust-omgeving wordt elke toegangsaanvraag continu geverifieerd op basis van identiteit, apparaatstatus en context, ongeacht waar de gebruiker zich bevindt. \textcite{CISA2023} beschrijft in het \emph{Zero Trust Maturity Model} van CISA hoe organisaties kunnen evolueren van traditionele netwerkbeveiliging naar een architectuur met fijnmazige micro-segmentatie. Dit reduceert de zogenaamde \emph{blast radius} van een aanval: als één apparaat wordt gecompromitteerd, blijft de schade beperkt tot dat specifieke segment.
+\subsection{Toepassing in Gezondheidszorg}
+De zorgsector is een belangrijk doelwit voor cyberaanvallen. Zorginstellingen kampen met verouderde apparatuur, het \textit{Internet of Medical Things} (IoMT), en strenge compliance-eisen zoals HIPAA \parencite{anacyber2024}. Z-CERT meldt in het dreigingsbeeld van 2024 een toename van digitale aanvallen, waaronder ransomware en datalekken, waarbij clouddiensten steeds vaker het doelwit zijn \parencite{zcert2024}.
 
-\subsection{ implementatie: Open-Source en WireGuard}
-Voor de technische implementatie van ZTNA (\emph{Zero Trust Network Access}) verschuift de markt naar software-defined oplossingen. Een belangrijke enabler voor moderne, performante implementaties is het WireGuard-protocol. \textcite{Donenfeld2017} toont aan dat WireGuard, door zijn kleinere codebase en moderne cryptografie, aanzienlijk betere prestaties en lagere latency biedt dan verouderde protocollen zoals IPsec en OpenVPN.
-\\
-Hoewel er diverse commerciële ZTNA-oplossingen bestaan, is er een groeiende interesse in open-source implementaties (zoals Headscale of NetBird) die gebruikmaken van WireGuard tunnels om een \emph{mesh-netwerk} te creëren. Deze oplossingen bieden potentieel een kosteneffectief alternatief voor kleinere zorginstellingen zoals een woonzorg centrum, maar een diepe academische validatie ontbreekt nog voor een goede en vertrouwingswaardige implementatie.
+ZTNA biedt hier een oplossing door netwerksegmentatie toe te passen en apparaten onzichtbaar te maken voor het publieke internet \parencite{Wal2022}. Het faciliteert veilige overdracht van kritieke data, zoals radiologiebeelden, zonder de workflow te vertragen en dwingt \textit{least-privilege} toegang af \parencite{appgate2023}. Dit is cruciaal om patiëntendossiers te beschermen tegen gijzelsoftware en datadiefstal \parencite{hoop2024}.
 
-\subsection{Relevantie voor dit onderzoek}
-Hoewel de theoretische voordelen van Zero Trust uitgebreid beschreven zijn in standaarden zoals die van NIST, ontbreekt het vaak aan concrete, vergelijkende studies gericht op de praktische implementatie binnen KMO-achtige omgevingen zoals woonzorgcentra. De meeste literatuur richt zich op enterprise-omgevingen of blijft conceptueel van aard. Dit onderzoek tracht dit tekort te vullen door kwantitatief te meten in welke mate een open-source ZTNA-implementatie daadwerkelijk het risico op laterale beweging reduceert in vergelijking met de industriestandaard (VPN).
+\subsection{Implementatie}
+De markt biedt diverse open-source tools voor ZTNA-implementaties:
+\begin{itemize}
+	\item \textbf{OpenZiti:} Richt zich op het inbedden van Zero Trust direct in applicaties via SDK's, waardoor een overlay-netwerk ontstaat dat geen open poorten vereist \parencite{aimultiple2025}. Het verbindt services in plaats van machines \parencite{OpenZiti2025}.
+	\item \textbf{Pomerium:} Maakt gebruik van een \textit{identity-aware proxy} architectuur die elke actie continu verifieert \autocite{aimultiple2025}.
+	\item \textbf{Octelium:} Een recenter platform dat functioneert als een "unified zero trust secure access platform". Het combineert functionaliteiten van een remote access VPN, ZTNA, en API-gateway, en ondersteunt protocollen zoals WireGuard en QUIC \autocite{octelium2025}.
+	\item \textbf{Pritunl Zero \& OpenVPN:} Bieden eveneens ZTNA-functionaliteiten, met focus op respectievelijk SSH-management en netwerktunneling \autocite{aimultiple2025}.
+\end{itemize}
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Dit onderzoek wordt gekenmerkt als een \textbf{vergelijkende} studie ondersteund door een technische \textbf{Proof of Concept (PoC)}. Het doel is om op een objectieve manier te bekijken hoe de verschillen zijn van een netwerk met ZTNA-principes en een netwerk die gebruikt maak van een traditionele VPN.
+Dit onderzoek wordt gekenmerkt als een \textbf{vergelijkende} studie ondersteund door een technische \textbf{Proof of Concept (PoC)}. Het doel is om op een objectieve manier te bekijken hoe de verschillen zijn van een netwerk met ZTNA-principes en een netwerk die gebruikt maakt van een traditionele VPN.
 
-Om de hoofdvraag te beantwoorden, wordt het onderzoek opgesplitst in vier fasen,. In elk van deze fases zal een speciefieke onderzoekstechniek worden gehanteerd.
+Om de hoofdvraag te beantwoorden, wordt het onderzoek opgesplitst in vier fasen. In elk van deze fases zal een specifieke onderzoekstechniek worden gehanteerd.
 
-\subsection{Fase 1: Literatuurstudie en Toolselectie}
-In de eerste fase wordt middels een \textbf{literatuurstudie} de theoretische basis gelegd. Hierbij wordt gebruikgemaakt van het NIST SP 800-207 raamwerk~\autocite{NIST2020} om de architecturale vereisten van Zero Trust vast te leggen en meer inzicht te geven.
+\subsection{Fase 1: Literatuurstudie}
+In de eerste fase wordt middels een \textbf{literatuurstudie} de theoretische basis gelegd. Hierbij wordt gebruikgemaakt van het NIST SP 800-207 raamwerk \parencite{rose2020zero} om de architecturale vereisten van Zero Trust vast te leggen en meer inzicht te geven.
 Daarnaast wordt een \textbf{vergelijkende analyse} uitgevoerd van beschikbare open-source ZTNA-oplossingen (zoals Headscale, NetBird of Firezone). De selectie van de tool voor de PoC gebeurt op basis van vooraf gedefinieerde criteria zoals bv.:
 \begin{itemize}
 	\item Compatibiliteit met het WireGuard-protocol.
@@ -85,17 +113,25 @@ De kern van de methodologie is de \textbf{simulatie} van de IT-infrastructuur. E
 \begin{enumerate}
 	\item \textbf{Architectuur:} De omgeving wordt gevirtualiseerd en gesegmenteerd in verschillende zones: een administratief segment, een medisch segment (EPD/IoT) en een gastennetwerk.
 	\item \textbf{Scenario A (Nulmeting):} Implementatie van een traditionele VPN-server (bijv. OpenVPN of WireGuard in gateway-modus) die toegang geeft tot het netwerk, representatief voor de huidige situatie.
-	\item \textbf{Scenario B (Experiment):} Implementatie van de geselecteerde ZTNA-oplossing, waarbij micro-segmentatie wordt toegepast op basis van identiteit in plaats van netwerklocatie.
+	\item \textbf{Scenario B (Experiment):} Implementatie van de geselecteerde ZTNA-oplossing, waarbij /\newline icro-segmentatie wordt toegepast op basis van identiteit in plaats van netwerklocatie.
 \end{enumerate}
 
 
 \subsection{Fase 3: Experiment en Meting}
-Om de onderzoeksvraag meetbaar te maken, wordt een \textbf{experiment} uitgevoerd volgens het ``Assume Breach'' principe. Hierbij wordt aangenomen dat een laptop van een externe medewerker is gecompromitteerd.
+Om de onderzoeksvraag meetbaar te maken, wordt een \textbf{experiment} uitgevoerd volgens het ``Assume Breach''-principe. Hierbij wordt aangenomen dat het endpoint van een externe medewerker is gecompromitteerd en beschikt over geldige toegangsrechten.
+
 \begin{itemize}
-	\item \textbf{Techniek:} Vanuit het gecompromitteerde endpoint worden geautomatiseerde netwerkscans uitgevoerd met tools zoals \textbf{Nmap}.
-	\item \textbf{Metric:} Het aantal bereikbare hosts en openstaande servicepoorten (TCP/UDP) in de andere netwerksegmenten wordt geteld.
-	\item \textbf{Validatie:} Met \textbf{Wireshark} wordt gecontroleerd of het verkeer daadwerkelijk via de versleutelde tunnels verloopt en of de firewall-regels correct worden afgedwongen.
+	\item \textbf{Netwerkexposure (nulmeting):} Vanuit het gecompromitteerde endpoint worden geautomatiseerde netwerkscans uitgevoerd met tools zoals \textbf{Nmap} om het aantal bereikbare hosts en openstaande servicepoorten (TCP/UDP) in andere netwerksegmenten te bepalen.
+	
+	\item \textbf{Laterale beweging:} Er wordt getest in welke mate het mogelijk is om vanuit het gecompromitteerde endpoint verbinding te maken met niet-geautoriseerde systemen en diensten (zoals SMB-, SSH- of HTTP-services) binnen het interne netwerk.
+	
+	\item \textbf{Identiteits- en contextafhankelijkheid:} De experimenten worden herhaald met identieke gebruikerscredentials maar vanuit een ander device of netwerkcontext, om het verschil in toegangscontrole tussen VPN en ZTNA te analyseren.
+	
+	\item \textbf{Blast radius:} De effectieve toegang tot netwerkresources wordt vergeleken met de vooraf gedefinieerde toegangsrechten, om de impact van een succesvolle initiële compromittering te evalueren.
+	
+	\item \textbf{Validatie:} Met \textbf{Wireshark} en logbestanden van de gebruikte oplossingen wordt gecontroleerd of het verkeer via de correcte tunnels verloopt en of toegangsregels correct worden afgedwongen.
 \end{itemize}
+
 
 \subsection{Fase 4: Vergelijkende Analyse}
 De data uit Fase 3 (de scanresultaten van Scenario A versus Scenario B) worden naast elkaar gelegd. De \textbf{kwantitatieve reductie} van het aanvalsoppervlak wordt berekend. Op basis hiervan wordt een advies geformuleerd over de haalbaarheid en de veiligheidswinst voor het woonzorgcentrum.
@@ -130,7 +166,7 @@ De uitvoering van dit onderzoek is gepland over een periode van 14 weken.
 			\ganttbar{1. Lit. \& Selectie}{1}{3} \\
 			\ganttbar{2. Lab \& VPN}{4}{6} \\
 			\ganttbar{3. Impl. ZTNA}{7}{9} \\
-			\ganttbar{4. Testen}{10}{12} \\
+			\ganttbar{4. Testen}{5}{12} \\
 			\ganttbar{5. Analyse}{13}{14} \\
 			
 			\ganttbar[bar/.append style={fill=black!60}]{Documentatie}{1}{14}
@@ -150,7 +186,7 @@ De uitvoering van dit onderzoek is gepland over een periode van 14 weken.
 
 
 
-De primaire verwachting van dit onderzoek is dat de implementatie van Zero-Trust Network Access (ZTNA) het aantal bereikbare netwerkpaden drastisch zal reduceren ten opzichte van de traditionele VPN-configuratie. Waar bij de VPN-nulmeting wordt verwacht dat een gecompromitteerd toestel onbeperkte toegang heeft tot achterliggende servers en IoT-apparatuur, zal de ZTNA-oplossing deze zichtbaarheid technisch beperken tot enkel de strikt noodzakelijke applicatieservices. Dit verschil in aanvalsoppervlak zal kwantitatief worden aangetoond middels netwerkscans en gevisualiseerd worden in een vergelijkende grafiek.
+De primaire verwachting van dit onderzoek is dat de implementatie van Zero-Trust Network Access (ZTNA) het aantal bereikbare netwerkpaden drastisch zal reduceren ten opzichte van de traditionele VPN-configuratie. Waar bij de VPN-nulmeting wordt verwacht dat een gecompromitteerd toestel onbeperkte of minimale beperkte toegang heeft tot achterliggende servers en IoT-apparatuur, zal de ZTNA-oplossing deze zichtbaarheid technisch beperken tot enkel de strikt noodzakelijke applicatieservices. Dit verschil in aanvalsoppervlak zal kwantitatief worden aangetoond middels netwerkscans en gevisualiseerd worden in een vergelijkende grafieken en tabellen.
 
 \subsection{Conclusie}
-Indien de meetresultaten de hypothese bevestigen, luidt de conclusie dat open-source micro-segmentatie een noodzakelijke en effectieve verdedigingslinie vormt tegen laterale beweging binnen zorgnetwerken. Dit biedt IT-beheerders een concreet bewijs dat het isoleren van apparaten via ZTNA de impact van ransomware-infecties beperkt tot het individuele toestel, waardoor de bedrijfscontinuïteit en patiëntveiligheid gewaarborgd blijven zonder dat hierbij hoge licentiekosten voor enterprise-software noodzakelijk zijn.
+Indien de meetresultaten de hypothese bevestigen, luidt de conclusie dat open-source micro-segmentatie een noodzakelijke en effectieve verdedigingslinie vormt tegen laterale beweging binnen zorgnetwerken. Dit biedt IT-beheerders een concreet bewijs dat het isoleren van apparaten via ZTNA de impact van ransomware-infecties beperkt tot het individuele toestel, waardoor de bedrijfscontinuïteit en patiëntveiligheid behouden blijven zonder dat hierbij hoge licentiekosten voor enterprise-software noodzakelijk zijn.
